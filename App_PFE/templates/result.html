@@ -1,0 +1,85 @@
+
+<!--le fichier result.html-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processed Image Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Clean and modern font */
+            background-color: #f4f4f4; /* Light grey background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 80%; /* Scales the image to fit the screen */
+            border-radius: 8px; /* Rounded corners for the image */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            background-color: #5C67F2; /* Consistent with the button on the upload page */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #4a54e1; /* Darker shade on hover for better interaction */
+        }
+    </style>
+</head>
+<body>
+    <h1>Processed Image Result</h1>
+    <img src="{{ image_url }}" alt="Processed Image" style="width: 50%;" height="30%">
+    <table>
+        <tr>
+            <th>Filename</th>
+            <th>Detected Classes</th>
+            <th>Confidence Scores</th>
+            <th>Timestamp</th>
+        </tr>
+        <tr>
+            <td>{{ filename }}</td>
+            <td>{{ detected_classes }}</td>
+            <td>{{ confidence_scores }}</td>
+            <td>{{ timestamp }}</td>
+        </tr>
+    </table>
+    <p>
+        <a href="{{ url_for('upload_page') }}">Upload another image</a>
+        <a href="{{ url_for('history') }}">View History</a>
+    </p>
+</body>
+</html>
